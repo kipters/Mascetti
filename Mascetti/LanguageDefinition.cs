@@ -8,13 +8,13 @@ namespace Mascetti
         {
         }
 
-        public LanguageDefinition(Dictionary<string, List<LocalizedValueDefinition>> values, List<LocalizedValuesContext> contexts)
+        public LanguageDefinition(Dictionary<string, List<LocalizedStringDefinition>> values, List<LocalizedValuesContext> contexts)
         {
             Values = values;
             Contexts = contexts;
         }
 
-        public Dictionary<string, List<LocalizedValueDefinition>> Values { get; set; }
+        public Dictionary<string, List<LocalizedStringDefinition>> Values { get; set; }
         public List<LocalizedValuesContext> Contexts { get; set; }
     }
 }

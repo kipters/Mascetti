@@ -1,12 +1,12 @@
 namespace Mascetti
 {
-    public class LocalizedValueDefinition
+    public class LocalizedStringDefinition
     {
-        public LocalizedValueDefinition()
+        public LocalizedStringDefinition()
         {
         }
 
-        public LocalizedValueDefinition(string formatString, int? first = null, int? last = null)
+        public LocalizedStringDefinition(string formatString, int? first = null, int? last = null)
         {
             First = first;
             Last = last;

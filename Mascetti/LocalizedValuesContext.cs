@@ -8,13 +8,13 @@ namespace Mascetti
         {
         }
 
-        public LocalizedValuesContext(Dictionary<string, string> matchRules, Dictionary<string,List<LocalizedValueDefinition>> values)
+        public LocalizedValuesContext(Dictionary<string, string> matchRules, Dictionary<string,List<LocalizedStringDefinition>> values)
         {
             MatchRules = matchRules;
             Values = values;
         }
 
         public Dictionary<string, string> MatchRules { get; set; }
-        public Dictionary<string, List<LocalizedValueDefinition>> Values { get; set; }
+        public Dictionary<string, List<LocalizedStringDefinition>> Values { get; set; }
     }
 }

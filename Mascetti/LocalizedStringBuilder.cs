@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Mascetti
 {
-    public class LocalizedSentenceBuilder
+    public class LocalizedStringBuilder
     {
         private readonly LanguageDefinition _definition;
         private readonly string _key;
@@ -11,7 +11,7 @@ namespace Mascetti
         private int _amount;
         private List<object> _parameters;
 
-        internal LocalizedSentenceBuilder(LanguageDefinition definition, string key)
+        internal LocalizedStringBuilder(LanguageDefinition definition, string key)
         {
             _definition = definition;
             _key = key;
@@ -19,20 +19,20 @@ namespace Mascetti
             _parameters = new List<object>();
         }
 
-        internal LocalizedSentenceBuilder(LanguageDefinition definition, string key, int amount) 
+        internal LocalizedStringBuilder(LanguageDefinition definition, string key, int amount) 
             : this(definition, key)
         {
             _amount = amount;
             _parameters.Add(amount);
         }
 
-        public LocalizedSentenceBuilder WithContext(string context, string value)
+        public LocalizedStringBuilder WithContext(string context, string value)
         {
             _contexts[context] = value;
             return this;
         }
 
-        public LocalizedSentenceBuilder WithContexts(Dictionary<string, string> contexts)
+        public LocalizedStringBuilder WithContexts(Dictionary<string, string> contexts)
         {
             foreach (var context in contexts)
                 _contexts[context.Key] = context.Value;
@@ -40,25 +40,25 @@ namespace Mascetti
             return this;
         }
 
-        public LocalizedSentenceBuilder Singular()
+        public LocalizedStringBuilder Singular()
         {
             _amount = 1;
             return this;
         }
 
-        public LocalizedSentenceBuilder Plural(int amount)
+        public LocalizedStringBuilder Plural(int amount)
         {
             _amount = amount;
             return this;
         }
 
-        public LocalizedSentenceBuilder WithParameters(params object[] parameters)
+        public LocalizedStringBuilder WithParameters(params object[] parameters)
         {
             _parameters.AddRange(parameters);
             return this;
         }
 
-        public static implicit operator string(LocalizedSentenceBuilder builder)
+        public static implicit operator string(LocalizedStringBuilder builder)
         {
             return builder.ToString();
         }

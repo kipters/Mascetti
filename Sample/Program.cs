@@ -14,41 +14,41 @@ namespace Sample
         {
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
-            var commentValues = new List<LocalizedValueDefinition>
+            var commentValues = new List<LocalizedStringDefinition>
             {
-                new LocalizedValueDefinition("WAT", null, -1),
-                new LocalizedValueDefinition("No comments", 0, 0),
-                new LocalizedValueDefinition("One comment", 1, 1),
-                new LocalizedValueDefinition("{0} comments", 2)
+                new LocalizedStringDefinition("WAT", null, -1),
+                new LocalizedStringDefinition("No comments", 0, 0),
+                new LocalizedStringDefinition("One comment", 1, 1),
+                new LocalizedStringDefinition("{0} comments", 2)
             };
 
-            var priceValues = new List<LocalizedValueDefinition>
+            var priceValues = new List<LocalizedStringDefinition>
             {
-                new LocalizedValueDefinition("Free", null, 0),
-                new LocalizedValueDefinition("Price: {0:C}", 1)
+                new LocalizedStringDefinition("Free", null, 0),
+                new LocalizedStringDefinition("Price: {0:C}", 1)
             };
 
-            var values = new Dictionary<string, List<LocalizedValueDefinition>>
+            var values = new Dictionary<string, List<LocalizedStringDefinition>>
             {
                 {"comments", commentValues},
                 {"price", priceValues}
             };
 
-            var maleProfileValues = new List<LocalizedValueDefinition>
+            var maleProfileValues = new List<LocalizedStringDefinition>
             {
-                new LocalizedValueDefinition("{0} updated his profile")
+                new LocalizedStringDefinition("{0} updated his profile")
             };
 
-            var femaleProfileValues = new List<LocalizedValueDefinition>
+            var femaleProfileValues = new List<LocalizedStringDefinition>
             {
-                new LocalizedValueDefinition("{0} updated her profile")
+                new LocalizedStringDefinition("{0} updated her profile")
             };
 
             var maleContext = new LocalizedValuesContext(new Dictionary<string, string> {{"gender", "male"}},
-                new Dictionary<string, List<LocalizedValueDefinition>> {{"profileUpdate", maleProfileValues}});
+                new Dictionary<string, List<LocalizedStringDefinition>> {{"profileUpdate", maleProfileValues}});
 
             var femaleContext = new LocalizedValuesContext(new Dictionary<string, string> {{"gender", "female"}},
-                new Dictionary<string, List<LocalizedValueDefinition>> {{"profileUpdate", femaleProfileValues}});
+                new Dictionary<string, List<LocalizedStringDefinition>> {{"profileUpdate", femaleProfileValues}});
 
             var definition = new LanguageDefinition
             {
@@ -56,7 +56,7 @@ namespace Sample
                 Contexts = new List<LocalizedValuesContext> {maleContext, femaleContext}
             };
 
-            var m = new LocalizedSentenceFactory(definition);
+            var m = new LocalizedStringProvider(definition);
 
             Console.WriteLine(m.Localize("comments").Plural(-1).WithParameters(-1).ToString());
             Console.WriteLine(m.Localize("comments").Plural(0).WithParameters(0).ToString());

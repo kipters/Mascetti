@@ -3,15 +3,15 @@ using System.Text;
 
 namespace Mascetti
 {
-    public class LocalizedSentenceFactory
+    public class LocalizedStringProvider
     {
         private LanguageDefinition _definition;
 
-        public LocalizedSentenceFactory()
+        public LocalizedStringProvider()
         {
         }
 
-        public LocalizedSentenceFactory(LanguageDefinition languageDefinition)
+        public LocalizedStringProvider(LanguageDefinition languageDefinition)
         {
             _definition = languageDefinition;
         }
@@ -29,7 +29,7 @@ namespace Mascetti
                 _definition.Values[value.Key] = value.Value;
         }
 
-        public LocalizedSentenceBuilder Localize(string key) => new LocalizedSentenceBuilder(_definition, key);
-        public LocalizedSentenceBuilder Localize(string key, int amount) => new LocalizedSentenceBuilder(_definition, key, amount);
+        public LocalizedStringBuilder Localize(string key) => new LocalizedStringBuilder(_definition, key);
+        public LocalizedStringBuilder Localize(string key, int amount) => new LocalizedStringBuilder(_definition, key, amount);
     }
 }
