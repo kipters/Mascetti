@@ -37,7 +37,11 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mascetti.cs" />
+    <Compile Include="LanguageDefinition.cs" />
+    <Compile Include="LocalizedSentenceBuilder.cs" />
+    <Compile Include="LocalizedValueDefinition.cs" />
+    <Compile Include="LocalizedValuesContext.cs" />
+    <Compile Include="LocalizedSentenceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

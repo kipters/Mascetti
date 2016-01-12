@@ -1,44 +1,29 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Mascetti
 {
-    public class Mascetti
-    {
-        private LanguageDefinition _definition;
-
-        public void Load(LanguageDefinition languageDefinition)
-        {
-            _definition = languageDefinition;
-        }
-
-        public void Add(LanguageDefinition languageDefinition)
-        {
-            // TODO
-        }
-
-        public LocalizedSentenceBuilder Localize(string key)
-        {
-            return new LocalizedSentenceBuilder(_definition, key);
-        }
-    }
-
     public class LocalizedSentenceBuilder
     {
         private readonly LanguageDefinition _definition;
         private readonly string _key;
-        private Dictionary<string, string> _contexts;
+        private readonly Dictionary<string, string> _contexts;
         private int _amount;
-        private object[] _parameters;
+        private List<object> _parameters;
 
         internal LocalizedSentenceBuilder(LanguageDefinition definition, string key)
         {
             _definition = definition;
             _key = key;
             _contexts = new Dictionary<string, string>();
-            _amount = 1;
+            _parameters = new List<object>();
+        }
+
+        internal LocalizedSentenceBuilder(LanguageDefinition definition, string key, int amount) 
+            : this(definition, key)
+        {
+            _amount = amount;
+            _parameters.Add(amount);
         }
 
         public LocalizedSentenceBuilder WithContext(string context, string value)
@@ -69,8 +54,13 @@ namespace Mascetti
 
         public LocalizedSentenceBuilder WithParameters(params object[] parameters)
         {
-            _parameters = parameters;
+            _parameters.AddRange(parameters);
             return this;
+        }
+
+        public static implicit operator string(LocalizedSentenceBuilder builder)
+        {
+            return builder.ToString();
         }
 
         public override string ToString()
@@ -80,9 +70,9 @@ namespace Mascetti
                 : _definition.Contexts
                     .FirstOrDefault(c =>
                         _contexts.All(r =>
-                            _contexts.ContainsKey(r.Key) && _contexts[r.Key] == r.Value))
-                    .Values;
-
+                            c.MatchRules.ContainsKey(r.Key) && c.MatchRules[r.Key] == r.Value))
+                    ?.Values;
+            
             if (values == null)
                 throw new KeyNotFoundException("I couldn't find any matching context");
 
@@ -91,29 +81,24 @@ namespace Mascetti
 
             var valueDefinition = values[_key];
 
+            string result;
+
             if (valueDefinition.Count == 1)
-                return string.Format(valueDefinition[0].FormatString, _parameters);
+            {
+                result = string.Format(valueDefinition[0].FormatString, _parameters.ToArray());
+                return result;
+            }
 
+            var formatString = valueDefinition.FirstOrDefault(d =>
+                (d.First == null || d.First <= _amount) &&
+                (d.Last == null || d.Last >= _amount));
 
+            if (formatString == null)
+                throw new KeyNotFoundException("I couldn't find any matching pluralization");
+
+            result = string.Format(formatString.FormatString, _parameters.ToArray());
+
+            return result;
         }
-    }
-
-    public class LanguageDefinition
-    {
-        public Dictionary<string, List<LocalizedValueDefinition>> Values { get; set; }
-        public List<LocalizedValuesContext> Contexts { get; set; }
-    }
-
-    public class LocalizedValuesContext
-    {
-        public Dictionary<string, string> MatchRules { get; set; }
-        public Dictionary<string, List<LocalizedValueDefinition>> Values { get; set; }
-    }
-
-    public class LocalizedValueDefinition
-    {
-        public int? First { get; set; }
-        public int? Last { get; set; }
-        public string FormatString { get; set; }
     }
 }
