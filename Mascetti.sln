@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mascetti", "Mascetti\Mascet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{A1B4356D-2075-4A7D-AE56-D0C6371E9904}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mascetti.Json", "Mascetti.Json\Mascetti.Json.csproj", "{0768D02D-BF1F-48CE-A96F-5417F12875C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{6D08D984-F2B9-4022-B53A-CBE5F5B5D271}"
+	ProjectSection(SolutionItems) = preProject
+		mascetti_schema-1.0.json = mascetti_schema-1.0.json
+	EndProjectSection
+	ProjectSection(FolderGlobals) = preProject
+		__JSONSchema = http://json-schema.org/draft-04/schema
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +31,10 @@ Global
 		{A1B4356D-2075-4A7D-AE56-D0C6371E9904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1B4356D-2075-4A7D-AE56-D0C6371E9904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1B4356D-2075-4A7D-AE56-D0C6371E9904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0768D02D-BF1F-48CE-A96F-5417F12875C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0768D02D-BF1F-48CE-A96F-5417F12875C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0768D02D-BF1F-48CE-A96F-5417F12875C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0768D02D-BF1F-48CE-A96F-5417F12875C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

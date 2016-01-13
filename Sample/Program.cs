@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Mascetti;
+using Mascetti.Json;
 
 namespace Sample
 {
@@ -14,6 +13,22 @@ namespace Sample
         {
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
+            //HardcodedSample();
+            JsonSample();
+        }
+
+        private static void JsonSample()
+        {
+            var json = File.ReadAllText("sample.json");
+            var ld = Helper.Deserialize(json);
+
+            var newJson = Helper.Serialize(ld);
+            Console.WriteLine(newJson);
+            Console.ReadLine();
+        }
+
+        private static void HardcodedSample()
+        {
             var commentValues = new List<LocalizedStringDefinition>
             {
                 new LocalizedStringDefinition("WAT", null, -1),

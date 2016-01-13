@@ -1,0 +1,90 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "description": "Mascetti localization file.",
+    "type": "object",
+    "definitions": {
+        "stringdefinition": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "first": {
+                            "type": [ "integer", "null" ],
+                            "description": "Infimum of the range for this pluralized string."
+                        },
+                        "last": {
+                            "type": [ "integer", "null" ],
+                            "description": "Supremum of the range for this pluralized string."
+                        },
+                        "formatstring": {
+                            "type": "string",
+                            "description": "The format for this pluralized string. Standard C# format string syntax applies."
+                        }
+                    },
+                    "required": [ "formatstring" ]
+                },
+                {
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "properties": {
+        "culture": {
+            "type": "string",
+            "description": "The culture this file is used to translate to."
+        },
+        "values": {
+            "type": "object",
+            "description": "The default context. Contains context-less strings and acts as a fallback in case no compatible context is found.",
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/stringdefinition"
+                        }
+                    }
+                ]
+            }
+        },
+        "contexts": {
+            "type": "array",
+            "description": "Optional contexts.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "matchrules": {
+                        "type": "object",
+                        "default": "Rules for this context. To select it, all must apply.",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "values": {
+                        "type": "object",
+                        "description": "Values for this context.",
+                        "additionalProperties": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/stringdefinition"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "required": [ "matchrules", "values" ]
+            }
+        }
+    },
+    "required": ["values"]
+}

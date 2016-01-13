@@ -1,0 +1,27 @@
+{
+    "values": {
+        "yes": "Yes",
+        "comments": [
+            {
+                "last": 0,
+                "formatstring": "No comments"
+            },
+            {
+                "first": 1,
+                "last": 1,
+                "formatstring": "One comment"
+            },
+            {
+                "first": 2,
+                "formatstring": "{0} comments"
+            }
+        ],
+        "price": [
+            {
+                "last": 0,
+                "formatstring": "Free"
+            },
+            "{0:C}"
+        ]
+    }
+}
