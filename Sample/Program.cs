@@ -4,6 +4,8 @@ using System.Globalization;
 using System.IO;
 using Mascetti;
 using Mascetti.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace Sample
 {
@@ -20,9 +22,14 @@ namespace Sample
         private static void JsonSample()
         {
             var json = File.ReadAllText("sample.json");
+            var schema = File.ReadAllText("mascetti_schema-1.0.json");
+            var jSchema = JSchema.Parse(schema);
+            var jObject = JObject.Parse(json);
+            var isValid = jObject.IsValid(jSchema);
+            Console.WriteLine($"JSON validation: {isValid}");
             var ld = Helper.Deserialize(json);
 
-            var newJson = Helper.Serialize(ld);
+            var newJson = Helper.Serialize(ld, true);
             Console.WriteLine(newJson);
             Console.ReadLine();
         }

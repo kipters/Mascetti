@@ -6,6 +6,13 @@ namespace Mascetti.Json
 {
     public class InlineDefinitionJsonConverter : JsonConverter
     {
+        private readonly StringDefinitionJsonConverter _itemConverter;
+
+        public InlineDefinitionJsonConverter(bool serializeAsArrays = false)
+        {
+            _itemConverter = new StringDefinitionJsonConverter(serializeAsArrays);
+        }
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             var definitions = value as List<LocalizedStringDefinition>;
@@ -22,7 +29,7 @@ namespace Mascetti.Json
                 return;
             }
 
-            var rawValue = JsonConvert.SerializeObject(definitions, serializer.Formatting);
+            var rawValue = JsonConvert.SerializeObject(definitions, serializer.Formatting, _itemConverter);
             writer.WriteRawValue(rawValue);
         }
 
