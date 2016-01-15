@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{6D08D984-F
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		mascetti_schema-1.0.json = mascetti_schema-1.0.json
-		README = README
+		README.md = README.md
 	EndProjectSection
 	ProjectSection(FolderGlobals) = preProject
 		__JSONSchema = http://json-schema.org/draft-04/schema
