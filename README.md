@@ -18,7 +18,7 @@ Installation is done via Nuget, just:
 Install-Package Mascetti
 ```
 
-Altought it isn't a requirement, localization files will be kept in JSON files. 
+Altought it isn't a requirement, localization files will usually be kept in JSON files. 
 The Nuget package `Mascetti.Json` contains a few helpers for serializing, 
 deserializing and validating such files. If you want to write your own 
 serializer, a JSON schema is provided for validation.
@@ -59,7 +59,7 @@ language that have a difference between male and female forms, and fallback to
 a default one in languages that don't.
 
 ```
-.WithParameters(...)
+.WithParameters(...);
 ```
 Lets you add parameters for string formatting, these are the object that will 
 be used for replacing the placeholders. Note that this method is additive,
