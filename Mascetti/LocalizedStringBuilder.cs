@@ -19,7 +19,7 @@ namespace Mascetti
             _parameters = new List<object>();
         }
 
-        internal LocalizedStringBuilder(LanguageDefinition definition, string key, int amount) 
+        internal LocalizedStringBuilder(LanguageDefinition definition, string key, int amount)
             : this(definition, key)
         {
             _amount = amount;
@@ -72,7 +72,7 @@ namespace Mascetti
                         _contexts.All(r =>
                             c.MatchRules.ContainsKey(r.Key) && c.MatchRules[r.Key] == r.Value))
                     ?.Values;
-            
+
             if (values == null)
                 throw new KeyNotFoundException("I couldn't find any matching context");
 

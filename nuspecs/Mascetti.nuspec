@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Mascetti</id>
+        <version>1.0.0.0</version>
+        <title>Mascetti</title>
+        <authors>Kipters</authors>
+        <owners>Kipters</owners>
+        <licenseUrl>https://github.com/kipters/Mascetti/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/kipters/Mascetti</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A library for handling localization files. Inspired by http://i18njs.com/.</description>
+        <tags>i18n localization translation mascetti</tags>
+    </metadata>
+</package>

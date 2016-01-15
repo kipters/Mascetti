@@ -23,5 +23,23 @@
             },
             [ 1, 1, "Just {0:C}" ]
         ]
-    }
+    },
+    "contexts": [
+        {
+            "matchrules": {
+                "gender": "male"
+            },
+            "values": {
+                "profileUpdate": "{0} updated his profile"
+            }
+        },
+        {
+            "matchrules": {
+                "gender": "female"
+            },
+            "values": {
+                "profileUpdate": "{0} updated her profile"
+            }
+        }
+    ]
 }

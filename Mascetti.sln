@@ -11,10 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mascetti.Json", "Mascetti.J
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{6D08D984-F2B9-4022-B53A-CBE5F5B5D271}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
 		mascetti_schema-1.0.json = mascetti_schema-1.0.json
+		README = README
 	EndProjectSection
 	ProjectSection(FolderGlobals) = preProject
 		__JSONSchema = http://json-schema.org/draft-04/schema
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuspecs", "Nuspecs", "{DEE4A35B-DB87-4730-8524-B048B314D9EC}"
+	ProjectSection(SolutionItems) = preProject
+		nuspecs\Mascetti.json.nuspec = nuspecs\Mascetti.json.nuspec
+		nuspecs\Mascetti.nuspec = nuspecs\Mascetti.nuspec
 	EndProjectSection
 EndProject
 Global

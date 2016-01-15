@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Mascetti.Json</id>
+        <version>1.0.0.0</version>
+        <title>Mascetti JSON Helpers</title>
+        <authors>Kipters</authors>
+        <owners>Kipters</owners>
+        <licenseUrl>https://github.com/kipters/Mascetti/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/kipters/Mascetti</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Helpers for serializing/deserializing Mascetti translation files in JSON</description>
+        <tags>i18n localization translation mascetti</tags>
+        <dependencies>
+            <dependency id="Mascetti" version="1.0.0.0"/>
+        </dependencies>
+    </metadata>
+</package>

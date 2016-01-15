@@ -15,7 +15,7 @@ namespace Mascetti
         {
             _definition = languageDefinition;
         }
-        
+
         public void Add(LanguageDefinition languageDefinition)
         {
             if (_definition == null)
