@@ -26,13 +26,13 @@ serializer, a JSON schema is provided for validation.
 ### Initialization
 Once you've got your `LanguageDefinition` object, you can instantiate a 
 `LocalizedStringProvider`:
-```
+```C#
 LanguageDefinition definition = ...
 var m = new LocalizedStringProvider(definition);
 ```
 
 You can also add more definitions like this:
-```
+```C#
 LanguageDefinition otherDefinition = ...
 m.Add(otherDefinition);
 ```
@@ -40,14 +40,14 @@ m.Add(otherDefinition);
 ### Localization
 Then, to get a localized string you can use the `Localize()` method:
 
-```
+```C#
 m.Localize("profileUpdate");
 ```
 
 this method returns a `LocalizedStringBuilder` that you can customize using a 
 fluent API:
 
-```
+```C#
 .WithContext(string context, string value);
 .WithContexts(Dictionary<string, string> contexts);
 ```
@@ -58,21 +58,21 @@ context. This for example let's you define two different contexts in
 language that have a difference between male and female forms, and fallback to
 a default one in languages that don't.
 
-```
+```C#
 .WithParameters(...);
 ```
 Lets you add parameters for string formatting, these are the object that will 
 be used for replacing the placeholders. Note that this method is additive,
 multiple calls will add parameters, not replace them! 
 
-```
+```C#
 .Plural(int amount);
 .Singular();
 ```
 The first one lets you set the amount of "items" to localize for, so the
 library can select the correct pluralization. For example you could have such a
 definition (in JSON):
-```
+```C#
 "comments": [
     [null, 0, "No comments"],
     [1, 1, "One comment"],
@@ -88,7 +88,7 @@ mdef.Localize("comments")
 
 I realize this is a pretty common scenario, and in such cases you can use
 an overload of the `Localize()` method:
-```
+```C#
 mdef.Localize("comments", numberOfComments);
 ```
 in this case the second parameter will be used both for pluralization selection
@@ -107,7 +107,7 @@ first ≤ x ≤ last
 where `x` is the amount parameter, will be selected. This means that a 
 definition such as `[null, null, "foobar"]` will **always** match
 
-```
+```C#
 .ToString()
 ```
 When you're done, just call this method to get the string representation you
